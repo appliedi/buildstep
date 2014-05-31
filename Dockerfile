@@ -1,5 +1,5 @@
-FROM ubuntu:quantal
-MAINTAINER progrium "progrium@gmail.com"
+FROM registry.mgmt.iad3.catalyze.io:5000/catalyzeio/base
+MAINTAINER Nicholas Mistry "nick@catalyze.io"
 
 RUN mkdir /build
 ADD ./stack/ /build

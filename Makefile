@@ -2,4 +2,4 @@
 all: build
 
 build: 
-	docker build -t progrium/buildstep .
+	docker build --rm=true -t catalyzeio/buildstep .

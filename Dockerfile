@@ -1,4 +1,4 @@
-FROM registry.mgmt.iad3.catalyze.io:5000/catalyzeio/base
+FROM catalyzeio/base
 MAINTAINER Nicholas Mistry "nick@catalyze.io"
 
 RUN mkdir /build

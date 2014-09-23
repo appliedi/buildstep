@@ -1,0 +1,23 @@
+image: catalyzeio/dronedocker
+env:
+  - DOCKER_HOST=tcp://build02.local:2375
+  - REGISTRY=registry.local:5000
+  - IMAGE_NAME=catalyzeio/buildstep
+script:
+  - docker build -t ${IMAGE_NAME} .
+  - docker tag ${IMAGE_NAME} ${REGISTRY}/${IMAGE_NAME}:${DRONE_BRANCH}.${DRONE_COMMIT:0:6}
+  - docker tag ${IMAGE_NAME} ${REGISTRY}/${IMAGE_NAME}:${DRONE_BRANCH}.latest
+  - docker push ${REGISTRY}/${IMAGE_NAME}:${DRONE_BRANCH}.${DRONE_COMMIT:0:6}
+  - docker push ${REGISTRY}/${IMAGE_NAME}:${DRONE_BRANCH}.latest
+  - docker rmi ${REGISTRY}/${IMAGE_NAME}:${DRONE_BRANCH}.latest
+  - docker rmi ${REGISTRY}/${IMAGE_NAME}:${DRONE_BRANCH}.${DRONE_COMMIT:0:6}
+  - docker rmi ${IMAGE_NAME}
+notify:
+  slack:
+    team: catalyze
+    channel: "#paas"
+    username: drone
+    token: c1WPHH8RQCeZ46LM28iY2Xu9
+    on_started: true
+    on_failure: true
+    on_success: true

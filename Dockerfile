@@ -1,4 +1,4 @@
-FROM catalyzeio/base
+FROM registry.local:5000/catalyzeio/base:master.a70951
 MAINTAINER Nicholas Mistry "nick@catalyze.io"
 
 RUN mkdir /build

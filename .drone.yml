@@ -1,6 +1,6 @@
 image: catalyzeio/dronedocker
 env:
-  - DOCKER_HOST=tcp://10.218.169.227.local:2375
+  - DOCKER_HOST=tcp://10.218.169.227:2375
   - REGISTRY=registry.local:5000
   - IMAGE_NAME=catalyzeio/buildstep
 script:
